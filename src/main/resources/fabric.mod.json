@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "chipsles-food-mod",
+	"version": "${version}",
+	"name": "Chipsles Food Mod",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/chipsles-food-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.stressdemon.chipslesfoodmod.ChipslesFoodMod"
+		],
+		"client": [
+			"io.github.stressdemon.chipslesfoodmod.ChipslesFoodModClient"
+		],
+		"fabric-datagen": [
+			"io.github.stressdemon.chipslesfoodmod.ChipslesFoodModDataGenerator"
+		]
+	},
+	"mixins": [
+		"chipsles-food-mod.mixins.json",
+		{
+			"config": "chipsles-food-mod.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
