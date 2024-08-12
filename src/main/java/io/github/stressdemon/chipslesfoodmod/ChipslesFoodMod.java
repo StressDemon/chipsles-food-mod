@@ -1,8 +1,13 @@
 package io.github.stressdemon.chipslesfoodmod;
 
+import io.github.stressdemon.chipslesfoodmod.init.BlockInit;
+import io.github.stressdemon.chipslesfoodmod.init.ItemGroupInit;
 import io.github.stressdemon.chipslesfoodmod.init.ItemInit;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +25,16 @@ public class ChipslesFoodMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		ItemInit.load();
+		BlockInit.load();
+		ItemGroupInit.load();
+
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
+			entries.addAfter(Items.COOKIE, ItemInit.OREO);
+			entries.addAfter(Items.APPLE, ItemInit.GREEN_APPLE);
+			entries.addAfter(Items.EGG, ItemInit.FRIED_EGG);
+			entries.addAfter(Items.BREAD, ItemInit.TOAST);
+		});
+
 		LOGGER.info("Snevira smells like cheese...");
 	}
 
